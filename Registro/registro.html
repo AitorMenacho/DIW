@@ -21,25 +21,31 @@
 
     <main>
         <div class="container">
-            <h1 class="text-center">Registro</h1>
+            <h1 class="text-center p-3">Registro</h1>
             <form action="alta.php" method="post">
-                <div class="form-group p-2">
-                    <label id="icon" for="name"><i class='bx bx-user'></i></label>
-                    <input type="text" name="nombre" id="nombre" placeholder="Nombre completo">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><i class='bx bx-user'></i></span>
+                    <input type="text" class="form-control" placeholder="Nombre" aria-label="nombre" name="nombre" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" placeholder="Primer apellido" aria-label="apellido1" name="apellido1" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" placeholder="Segundo apellido" aria-label="apellido2" name="apellido2" aria-describedby="basic-addon1">
                 </div>
-                <div class="form-group p-2">
-                    <label id="icon" for="name"><i class='bx bx-envelope'></i></label>
-                    <input type="email" name="email" id="email" placeholder="correo@email.com">
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><i class='bx bx-envelope'></i></span>
+                    <input type="email" class="form-control" placeholder="Email" aria-label="email" name="email" aria-describedby="basic-addon1">
                 </div>
-                <div class="form-group p-2">
-                    <label id="icon" for="name"><i class='bx bx-key'></i></label>
-                    <input type="password" name="contrasenna" id="contrasenna" placeholder="contraseña">
+                
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><i class='bx bx-key'></i></span>
+                    <input type="password" class="form-control" placeholder="Contraseña" aria-label="contrasenna" name="contrasenna" aria-describedby="basic-addon1">
                 </div>
-                <div class="form-group p-2">
-                    <label id="icon" for="name"><i class='bx bx-key'></i></label>
-                    <input type="password" name="contrasenna" id="contrasenna" placeholder="Repite la contraseña">
+                
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1"><i class='bx bx-key'></i></span>
+                    <input type="password" class="form-control" placeholder="Repite la contraseña" aria-label="contrasenna" name="contrasenna" aria-describedby="basic-addon1">
                 </div>
             </form>
+            <p class="text-center p-3"> o inicia sesión</p>
         </div>
     </main>
 
