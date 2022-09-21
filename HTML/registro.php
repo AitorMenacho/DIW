@@ -13,7 +13,7 @@
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../CSS/style.css">
     <!-- Iconos Boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -25,7 +25,7 @@
     <main>
         <div class="container">
             <h1 class="text-center p-4">Registro</h1>
-            <form class="formulario" action="alta.php" method="post" id="f1">
+            <form class="formulario" action="../PHP/alta.php" method="post" id="f1">
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1"><i class='bx bx-user'></i></span>
                     <input type="text" class="form-control" placeholder="Nombre" aria-label="nombre" name="nombre" aria-describedby="basic-addon1">
@@ -54,7 +54,7 @@
                 <button class="boton" type="submit">Registrarme</button>
             </form>
             <div class="enlace-contenedor">
-                <a class="enlace" href="inicioSesion.html"> o inicia sesión</a>
+                <a class="enlace" href="inicioSesion.php"> o inicia sesión</a>
             </div>
         </div>
     </main>

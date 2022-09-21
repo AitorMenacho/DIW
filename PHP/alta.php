@@ -25,14 +25,14 @@ if ($result > 0) {
 
     //Mandamos mensaje de confirmación
     $confirmado = "true";
-    header("location:registro.php?confirmado=$confirmado");
+    header("location:../HTML/registro.php?confirmado=$confirmado");
 
 //Si no
 } else {
 
     //Mandamos mensaje de error
     $confirmado = "false";
-    header("location:registro.php?confirmado=$confirmado");
+    header("location:../HTML/registro.php?confirmado=$confirmado");
 }
 
 ?>
