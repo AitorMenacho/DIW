@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- SweetAlert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.all.min.js"></script>
+
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -56,6 +60,33 @@
             </div>
         </div>
     </main>
+
+    <!-- MODAL CONFIRMACIÓN -->
+    <?php
+    if (empty($_REQUEST['confirmado'])) {
+        $confirmado = "";
+    } else {
+        $confirmado = $_REQUEST['confirmado'];
+    }
+    if ($confirmado == "true") { ?>
+        <script lang="JavaScript">
+            Swal.fire({
+                icon: 'success',
+                title: '¡Genial!',
+                text: 'Ya estás registrado.'
+            })
+        </script>
+    <?php }
+    if ($confirmado == "false") { ?>
+        <script lang="JavaScript">
+            Swal.fire({
+                icon: 'error',
+                title: '¡Oh...!',
+                text: 'Ha ocurrido algun error, prueba más tarde o contacta con nosotros.'
+            })
+        </script>
+    <?php } ?>
+    <!-- MODAL CONFIRMACIÓN -->
 
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
