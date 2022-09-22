@@ -13,7 +13,7 @@ $consulta = "SELECT * FROM usuarios WHERE Usuario_email = '$email' AND Usuario_c
 $resultado = mysqli_query($conexion, $consulta)
     or die( "Problemas al buscar usuario: ".mysqli_error($conexion) );
 
-if( $resultado == 1 ){
+if( mysqli_num_rows($resultado) == 1 ){
 
     session_start();
     $_SESSION['email'] = $email;

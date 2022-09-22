@@ -21,18 +21,18 @@ $sql = "SELECT * FROM usuarios WHERE Usuario_email = '$_REQUEST[email]'";
 $result = $conexion->query($sql);
 
 //Si existe
-if ($result > 0) {
+if (mysqli_num_rows($result) > 0) {
 
     //Mandamos mensaje de confirmación
     $confirmado = "true";
-    header("location:../HTML/registro.php?confirmado=$confirmado");
+    header("location:../registro.php?confirmado=$confirmado");
 
 //Si no
 } else {
 
     //Mandamos mensaje de error
     $confirmado = "false";
-    header("location:../HTML/registro.php?confirmado=$confirmado");
+    header("location:../registro.php?confirmado=$confirmado");
 }
 
 ?>
