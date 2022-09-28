@@ -10,14 +10,41 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="sweetalert2.all.min.js"></script>
 
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
     <!-- CSS -->
-    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="./CSS/style.css">
+    
     <!-- Iconos Boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <title>Registro</title>
+
+    <!-- Comprobación campos -->
+    <script>
+        $(document).ready(function() {
+
+            $('#email').on('blur', function() {
+
+                var email = $(this).val();
+                var dataString = 'email=' + email;
+
+                $.ajax({
+                    type: "POST",
+                    url: "PHP/comprueba_email.php",
+                    data: dataString,
+                    success: function(data) {
+                        $('#resul').fadeIn(1000).html(data);
+                    }
+                });
+            });
+        });
+    </script>
+    <!-- Comprobación campos -->
 </head>
 
 <body>
@@ -35,9 +62,12 @@
 
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1"><i class='bx bx-envelope'></i></span>
-                    <input type="email" class="form-control" placeholder="Email" aria-label="email" name="email" aria-describedby="basic-addon1">
+                    <input type="email" class="form-control" placeholder="Email" id="email" aria-label="email" name="email" aria-describedby="basic-addon1">
+                    
                 </div>
-
+                <div class="input-group mb-3">
+                    <div id="resul"></div>
+                </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1"><i class='bx bx-key'></i></span>
                     <input type="password" class="form-control" id="contrasenna" placeholder="Contraseña" aria-label="contrasenna" name="contrasenna" aria-describedby="basic-addon1">
@@ -73,7 +103,7 @@
             Swal.fire({
                 icon: 'success',
                 title: '¡Genial!',
-                text: 'Ya estás registrado.'
+                text: 'Te acabamos de mandar un mensaje de confirmación.'
             })
         </script>
     <?php }

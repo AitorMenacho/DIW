@@ -8,24 +8,36 @@ $email = $_REQUEST['email'];
 $contrasenna = $_REQUEST['contrasenna'];
 
 //Comprobamos si esos datos coinciden con alguno de la base
-$consulta = "SELECT * FROM usuarios WHERE Usuario_email = '$email' AND Usuario_clave = '$contrasenna'";
+$consulta = "SELECT * FROM usuarios WHERE Usuario_email = '$email'";
 
 $resultado = mysqli_query($conexion, $consulta)
     or die( "Problemas al buscar usuario: ".mysqli_error($conexion) );
 
-if( mysqli_num_rows($resultado) == 1 ){
+while( $res = mysqli_fetch_array($resultado) ){
 
-    session_start();
-    $_SESSION['email'] = $email;
-    $_SESSION['contrasenna'] = $contrasenna;
+    if( !$res['Usuario_bloqueado'] ){
 
-    header("location:../HTML/USUARIO/index.php");
-
-} else {
-
-    $fallo = "false";
-    header("location:../HTML/inicioSesion.php?confirmado=$fallo");
-
+        if(password_verify($contrasenna, $res['Usuario_clave'])){
+    
+            session_start();
+            $_SESSION['email'] = $email;
+            $_SESSION['contrasenna'] = $contrasenna;
+    
+            header("location:../HTML/USUARIO/index.php");
+    
+        } else {
+    
+            $fallo = "false";
+            header("location:../HTML/inicioSesion.php?confirmado=$fallo");
+    
+        }
+    } else {
+        
+        $bloqueado = "true";
+        header("location:../HTML/inicioSesion.php?bloqueado=true");
+        
+    }
+    
 }
 
 ?>
