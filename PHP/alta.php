@@ -29,8 +29,6 @@ $result = $conexion->query($sql);
 
 //Si existe
 if (mysqli_num_rows($result) > 0) {
-    
-    //$codigo = 'Para confirmar tu correo clica en <a href="https://aitormenachovega.000webhostapp.com/PHP/confirmacion.php?usuario='.$_REQUEST['email'].'&clave='.$numConfirmacion.'">Activar</a>';
 
     $codigo = "
     <!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
