@@ -36,14 +36,14 @@
 
             if ($confirmado == "false") {
             ?>
-                <h1 class="text-center p-2">Oh no...</h1>
+                <h1 class="entrada text-center p-2">Oh no...</h1>
                 <img class="mx-auto d-block carita" src="../IMG/Sadface.svg" alt="Carita feliz">
 
             <?php
             } else {
             ?>
 
-                <h1 class="text-center p-2">¡ Hola de nuevo !</h1>
+                <h1 class="entrada text-center p-2">¡ Hola de nuevo !</h1>
                 <img class="mx-auto d-block carita" src="../IMG/Happyface.svg" alt="Carita feliz">
 
             <?php
@@ -74,6 +74,26 @@
 
                 <button type="submit">Inciar sesión</button>
             </form>
+            
+            <!-- MODAL BLOQUEADO -->
+            <?php
+            if (empty($_REQUEST['bloqueado'])) {
+                $bloqueado = "";
+            } else {
+                $bloqueado = $_REQUEST['bloqueado'];
+            }
+            
+            if ($bloqueado == "true") { ?>
+                <script lang="JavaScript">
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'Vaya vaya..',
+                        text: 'Parece que aún tienes la cuenta bloqueada.... Activala con el email que te mandamos.'
+                    })
+                </script>
+            <?php } ?>
+            <!-- MODAL BLOQUEADO -->
+            
             <div class="enlace-contenedor">
                 <a class="enlace" href="../index.php"> o Registrate</a>
             </div>
