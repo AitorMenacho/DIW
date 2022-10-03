@@ -24,6 +24,55 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <title>Perfil</title>
+
+    <script>
+        $(document).ready(function() {
+
+            $('#foto').on('click', function() {
+
+                var email = $('#email').val();
+                var dataString = 'email=' + email;
+
+                Swal.fire({
+                    title: 'Introduce la nueva foto de perfil',
+                    input: 'file',
+                    showCancelButton: true,
+                    confirmButtonText: 'Subir',
+                    cancelButtonText: 'Cancelar',
+                    showLoaderOnConfirm: true,
+
+                    preConfirm: (login) => {
+
+                        return fetch(`//api.github.com/users/${login}`)
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error(response.statusText)
+                                }
+                                return response.json()
+                            })
+                            .catch(error => {
+                                Swal.showValidationMessage(
+                                    `Request failed: ${error}`
+                                )
+                            })
+                    },
+
+                    allowOutsideClick: () => !Swal.isLoading()
+                }).then((result) => {
+
+                    if (result.isConfirmed) {
+                        Swal.fire({
+                            title: `${result.value.login}'s avatar`,
+                            imageUrl: result.value.avatar_url
+                        })
+                    }
+                    
+                })
+
+            });
+
+        });
+    </script>
 </head>
 
 <body>
@@ -51,12 +100,14 @@
 
     ?>
 
+        <input type="hidden" name="email" id="email" value="<?php echo $email ?>">
+
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark text.align-center">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a class="navbar-brand" href="usuario.php" style="margin-left: 15px;"><img class="img-perfil" width="50px" src="../../IMG/usuario.jpg" alt="foto de perfil"> <?php echo $nombre ?> </a>
+                <a class="navbar-brand btn" id="foto" style="margin-left: 15px;"><img class="img-perfil" width="50px" src="../../IMG/usuario.jpg" alt="foto de perfil"> <?php echo $nombre ?> </a>
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0 mx-auto">
                     <li class="nav-item active">
                         <a class="nav-link" href="#">Página</a>
