@@ -1,9 +1,9 @@
 <?php
 
 $nombreserver = "localhost";
-$basededatos = "id19609002_diw";
-$nombreusuario = "id19609002_aitormenacho";
-$contrasenna = "w=W18cc-@#5v(QOB";
+$basededatos = "diw";
+$nombreusuario = "root";
+$contrasenna = "";
 
 $conexion=mysqli_connect($nombreserver,$nombreusuario,$contrasenna,$basededatos);
 

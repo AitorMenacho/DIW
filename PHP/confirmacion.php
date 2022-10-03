@@ -15,7 +15,7 @@ $resultado = mysqli_query($conexion, $consulta)
 
 while( $res = mysqli_fetch_array($resultado) ){
 
-    mysqli_query($conexion, "UPDATE usuarios SET Usuario_bloqueado = '0' WHERE Usuario_id = '$res[Usuario_id]'") or
+    mysqli_query($conexion, "UPDATE usuarios SET Usuario_bloqueado = '0', Usuario_numero_intentos = '0' WHERE Usuario_id = '$res[Usuario_id]'") or
         die("Problemas al actualizar:" . mysqli_error($conexion));
 
     session_start();

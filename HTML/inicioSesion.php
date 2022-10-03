@@ -84,12 +84,17 @@
             }
             
             if ($bloqueado == "true") { ?>
+
                 <script lang="JavaScript">
+
+                    var link  = "https://aitormenachovega.000webhostapp.com/PHP/confirmacion.php?usuario=$email&clave=$numConfirmacion"
+
                     Swal.fire({
                         icon: 'info',
                         title: 'Vaya vaya..',
-                        text: 'Parece que aún tienes la cuenta bloqueada.... Activala con el email que te mandamos.'
+                        text: 'Parece que tienes la cuenta bloqueada.... Activala con el email que te hemos mandado mandamos.'
                     })
+
                 </script>
             <?php } ?>
             <!-- MODAL BLOQUEADO -->
