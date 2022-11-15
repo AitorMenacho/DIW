@@ -2,6 +2,18 @@
 <html lang="es">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y06BZPV9VE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-Y06BZPV9VE');
+    </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,10 +27,11 @@
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    
+
     <!-- CSS -->
     <link rel="stylesheet" href="./CSS/style.css">
-    
+    <link rel="stylesheet" href="./CSS/style-registro.css">
+
     <!-- Iconos Boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -51,40 +64,46 @@
 
     <main>
         <div class="container">
-            <h1 class="text-center p-4">Registro</h1>
-            <form class="formulario" action="PHP/alta.php" method="post" id="f1">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"><i class='bx bx-user'></i></span>
-                    <input type="text" class="form-control" placeholder="Nombre" aria-label="nombre" name="nombre" aria-describedby="basic-addon1">
-                    <input type="text" class="form-control" placeholder="Primer apellido" aria-label="apellido1" name="apellido1" aria-describedby="basic-addon1">
-                    <input type="text" class="form-control" placeholder="Segundo apellido" aria-label="apellido2" name="apellido2" aria-describedby="basic-addon1">
-                </div>
+            <div class="formulario inicio">
+                <img class="img-port" src="./IMG/Happyface.svg" width="70%" alt="Carita Feliz">
+                <h1 class="text-center p-4 text-white">¡BIENVENIDO!</h1>
+            </div>
+            <div class="formulario">
+                <form action="PHP/alta.php" method="post" id="f1">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class='bx bx-user'></i></span>
+                        <input type="text" class="form-control" placeholder="Nombre" aria-label="nombre" name="nombre" aria-describedby="basic-addon1" required>
+                        <input type="text" class="form-control" placeholder="Primer apellido" aria-label="apellido1" name="apellido1" aria-describedby="basic-addon1" required>
+                        <input type="text" class="form-control" placeholder="Segundo apellido" aria-label="apellido2" name="apellido2" aria-describedby="basic-addon1" required>
+                    </div>
 
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"><i class='bx bx-envelope'></i></span>
-                    <input type="email" class="form-control" placeholder="Email" id="email" aria-label="email" name="email" aria-describedby="basic-addon1">
-                    
-                </div>
-                <div class="input-group mb-3">
-                    <div id="resul"></div>
-                </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"><i class='bx bx-key'></i></span>
-                    <input type="password" class="form-control" id="contrasenna" placeholder="Contraseña" aria-label="contrasenna" name="contrasenna" aria-describedby="basic-addon1">
-                </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class='bx bx-envelope'></i></span>
+                        <input type="email" class="form-control" placeholder="Email" id="email" aria-label="email" name="email" aria-describedby="basic-addon1" required>
 
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"><i class='bx bx-key'></i></span>
-                    <input type="password" class="form-control" id="contrasennaR" placeholder="Repite la contraseña" aria-label="contrasenna" name="contrasennaR" aria-describedby="basic-addon1">
-                </div>
-                <div class="input-group mb-3">
-                    <input type="hidden" class="form-control" name="aqui">
-                </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div id="resul"></div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class='bx bx-key'></i></span>
+                        <input type="password" class="form-control" id="contrasenna" placeholder="Contraseña" aria-label="contrasenna" name="contrasenna" aria-describedby="basic-addon1" required>
+                    </div>
 
-                <button class="boton" type="submit">Registrarme</button>
-            </form>
-            <div class="enlace-contenedor-reg">
-                <a class="enlace" href="HTML/inicioSesion.php"> o inicia sesión</a>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class='bx bx-key'></i></span>
+                        <input type="password" class="form-control" id="contrasennaR" placeholder="Repite la contraseña" aria-label="contrasenna" name="contrasennaR" aria-describedby="basic-addon1" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="hidden" class="form-control" name="aqui">
+                    </div>
+                    <div class="">
+                        <button class="boton btn" type="submit">
+                            <p>Registrarme</p>
+                        </button>
+                    </div>
+                    <a class="p-2 m-2" href="./HTML/inicioSesion.php">Iniciar sesión</a>
+                </form>
             </div>
         </div>
     </main>
@@ -128,8 +147,8 @@
             //variables
             var pass1 = $('[name=contrasenna]');
             var pass2 = $('[name=contrasennaR]');
-            var pos   = $('[name=aqui]'); 
-            var bot   = $('.boton');
+            var pos = $('[name=aqui]');
+            var bot = $('.boton');
 
             var negacion = "No coinciden las contraseñas";
 
@@ -151,12 +170,12 @@
 
                     span.text(negacion).addClass('alert').addClass('alert-danger');
                     bot.hide();
-                
+
                 } else {
-                
+
                     span.text('');
                     bot.show();
-                
+
                 }
             }
 

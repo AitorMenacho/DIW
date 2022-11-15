@@ -1,7 +1,7 @@
 <?php
 
 $nombreserver = "localhost";
-$basededatos = "diw";
+$basededatos = "instituto";
 $nombreusuario = "root";
 $contrasenna = "";
 
