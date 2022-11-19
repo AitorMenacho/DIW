@@ -98,9 +98,7 @@
                         <input type="hidden" class="form-control" name="aqui">
                     </div>
                     <div class="">
-                        <button class="boton btn" type="submit">
-                            <p>Registrarme</p>
-                        </button>
+                        <button class="boton btn" type="submit">Registrarme</button>
                     </div>
                     <a class="p-2 m-2" href="./HTML/inicioSesion.php">Iniciar sesión</a>
                 </form>

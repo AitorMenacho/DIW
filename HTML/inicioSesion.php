@@ -108,9 +108,7 @@
                     <?php } ?>
                     <!-- MODAL CONFIRMACIÓN -->
 
-                    <button class="btn boton" type="submit">
-                        <p>Inciar sesión</p>
-                    </button>
+                    <button class="btn boton" type="submit">Iniciar sesión</button>
                     <a class="m-2 p-2" href="../index.php">Registrate</a>
                 </form>
             </div>

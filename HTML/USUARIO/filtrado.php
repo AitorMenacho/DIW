@@ -27,7 +27,7 @@
     <!-- Iconos Boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <title>Perfil</title>
+    <title>Filtrado</title>
 </head>
 
 <body>
@@ -38,13 +38,10 @@
     if (isset($_SESSION['email'], $_SESSION['contrasenna'])) {
 
         $email = $_SESSION['email'];
-    
     } else {
 
         header('location:../inicioSesion.php');
-
     }
-
 
 
     $datos = "SELECT * FROM usuarios WHERE Usuario_email = '$email'";
@@ -57,7 +54,6 @@
         $id     = $usuario['Usuario_id'];
         $imagen = $usuario['Usuario_fotografia_enlace'];
     }
-
     ?>
 
     <input type="hidden" name="email" id="email" value="<?php echo $email ?>">
@@ -100,26 +96,42 @@
                 if (!isset($_GET['ressultados'])) {
 
                     $resultado_por_pagina = 6;
-
                 }
 
                 //Sacamos todos los usuarios de la página
-                $datos = "SELECT * FROM usuarios";
-                $resultado = mysqli_query($conexion, $datos)
+                $sql = 'SELECT * FROM usuarios';
+
+                $clauses = array();
+                //These two variables might be created via a form request.
+                $column1 = $_GET['nombre'];
+                $column2 = $_GET['estado'];
+
+                if ( !empty($column1) ) {
+                    $clauses[] = 'Usuario_nombre = "' . $column1 . '"';
+                }
+                if ( !empty($column2) | $column2 == 0 ) {
+                    $clauses[] = 'Usuario_bloqueado = "' . $column2 . '"';
+                }
+
+                if (count($clauses) > 0) {
+                    $sql .= ' WHERE ' . implode(' AND ', $clauses);
+                }
+
+                $resultado = mysqli_query($conexion, $sql)
                     or die("Problemas al buscar usuario: " . mysqli_error($conexion));
 
                 //Guardamos el número de resultados que tenemos.
-                $numero_de_resultados = mysqli_num_rows($resultado);
+                $numero_de_resultados = mysqli_num_rows($resultado);                
 
                 /* Número de páginas que vamos a tener dependiendo de lo resultado que tengamos y
-                queramos ver. */
+                        queramos ver. */
                 $numero_de_paginas = ceil($numero_de_resultados / $resultado_por_pagina);
 
                 //Determina el número de páginas
                 if (!isset($_GET['pagina'])) {
 
                     $pagina = 1;
-
+                    
                 } else {
 
                     $pagina = $_GET['pagina'];
@@ -129,8 +141,8 @@
                 $pagina_primer_resutlado = ($pagina - 1) * $resultado_por_pagina;
 
                 //Sacamos el resultado limitado
-                $query = "SELECT * FROM usuarios LIMIT " . $pagina_primer_resutlado . ',' . $resultado_por_pagina;
-                $result = mysqli_query($conexion, $query);
+                $sql .= " LIMIT " . $pagina_primer_resutlado . ',' . $resultado_por_pagina.';';
+                $result = mysqli_query($conexion, $sql);
 
                 while ($usuario = mysqli_fetch_array($result)) {
 
@@ -235,16 +247,18 @@
 
                     if ($pagina <= 1) {
 
-                        echo '<a class="btn m-2 text-light" href="index.php?pagina=1"> <i class="bx bx-left-arrow-alt"></i> </a>';
+                        echo '<a class="btn m-2 text-light" href="filtrado.php?estado='.$column2.'&nombre='.$column1.'&pagina=1"> <i class="bx bx-left-arrow-alt"></i> </a>';
+
                     } else {
 
-                        echo '<a class="btn m-2 text-light" href="index.php?pagina=' . $pagina - 1 . '"> <i class="bx bx-left-arrow-alt"></i> </a>';
+                        echo '<a class="btn m-2 text-light" href="filtrado.php?estado='.$column2.'&nombre='.$column1.'&pagina=' . $pagina - 1 . '"> <i class="bx bx-left-arrow-alt"></i> </a>';
+
                     }
 
                     //Link de las páginaciones.
                     for ($pagina = 1; $pagina <= $numero_de_paginas; $pagina++) {
 
-                        echo '<a class="btn m-1 text-light" href = "index.php?pagina=' . $pagina . '">' . $pagina . ' </a>';
+                        echo '<a class="btn m-1 text-light" href = "filtrado.php?estado='.$column2.'&nombre='.$column1.'&pagina=' . $pagina . '">' . $pagina . ' </a>';
                     }
 
                     if (!empty($_GET['pagina'])) {
@@ -253,14 +267,15 @@
 
                         if ($_GET['pagina'] >= $numero_de_paginas) {
 
-                            echo '<a class="btn m-2 text-light" href="index.php?pagina=' . $numero_de_paginas . '"> <i class="bx bx-right-arrow-alt"></i> </a>';
+                            echo '<a class="btn m-2 text-light" href="filtrado.php?estado='.$column2.'&nombre='.$column1.'&pagina=' . $numero_de_paginas . '"> <i class="bx bx-right-arrow-alt"></i> </a>';
+                        
                         } else {
 
-                            echo '<a class="btn m-2 text-light" href="index.php?pagina=' . $pagina + 1 . '"> <i class="bx bx-right-arrow-alt"></i> </a>';
+                            echo '<a class="btn m-2 text-light" href="filtrado.php?estado='.$column2.'&nombre='.$column1.'&pagina=' . $pagina + 1 . '"> <i class="bx bx-right-arrow-alt"></i> </a>';
                         }
                     } else {
 
-                        echo '<a class="btn m-2 text-light" href="index.php?pagina=2"> <i class="bx bx-right-arrow-alt"></i> </a>';
+                        echo '<a class="btn m-2 text-light" href="filtrado.php?estado='.$column2.'&nombre='.$column1.'&pagina=2"> <i class="bx bx-right-arrow-alt"></i> </a>';
                     }
 
 

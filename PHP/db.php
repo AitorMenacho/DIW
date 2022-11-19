@@ -5,7 +5,7 @@ $basededatos = "instituto";
 $nombreusuario = "root";
 $contrasenna = "";
 
-$conexion=mysqli_connect($nombreserver,$nombreusuario,$contrasenna,$basededatos);
+$conexion = mysqli_connect( $nombreserver, $nombreusuario, $contrasenna, $basededatos);
 
 
 ?>
