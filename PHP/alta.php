@@ -1029,5 +1029,3 @@ if (mysqli_num_rows($result) > 0) {
     $confirmado = "false";
     header("location:../index.php?confirmado=$confirmado");
 }
-
-?>
